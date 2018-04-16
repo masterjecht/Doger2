@@ -11,6 +11,7 @@ public class PlayerMasterScript : MonoBehaviour {
     public bool AbilityOnCooldown;
     public float MovementSpeed;
     public bool IsAlive;
+    public GameObject CurrentPlatform;
 
     public bool ActionIput;
 
@@ -20,6 +21,7 @@ public class PlayerMasterScript : MonoBehaviour {
 	void Start () {
         // start the level NOTE remove this when demo over
         //GetComponent<TimeLine>().StartTimer();
+        CurrentPlatform = GameObject.Find("Platform");
 	}
 	
 	

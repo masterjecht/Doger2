@@ -15,13 +15,19 @@ public class Spawners : MonoBehaviour {
     public bool RandomTime;
     public bool RandomLocation;             // if false will home to player
     public bool ChangingSides;
+    public bool SpawnerOnPlayfield;
 
     private float CurrentTime;
     private float AdditionalTime;
     private GameObject Player;
+    private GameObject Scripts;
+    private GameObject Platform;
 
 	void Start () {
         Player = GameObject.Find("Player");
+        Scripts = GameObject.Find("Scripts");
+        Platform = Scripts.GetComponent<PlayerMasterScript>().CurrentPlatform;
+
         InvokeRepeating("IncreaseTime", 0, 0.01f);
     }
 	
@@ -45,7 +51,19 @@ public class Spawners : MonoBehaviour {
     // change the location to a random position NOTE I HAVE TAKEN THE RANDOM OUT FOR NOW!!
     void ChangeLocation()
     {
-        Debug.Log("sadsa");
+        // check if the spawner spawns ontop the platform ------------
+        if (SpawnerOnPlayfield)
+        {
+            if (RandomLocation)
+            {
+                this.transform.position = Platform.GetComponent<PlatformProperties>().FindRandomLocation();
+            }
+            else
+            {
+                this.transform.position = Player.transform.position;
+            }
+            return;
+        }
         //-----------top ------------------
         if (Side == "Top")
         {
