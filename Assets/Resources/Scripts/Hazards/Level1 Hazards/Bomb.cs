@@ -26,7 +26,7 @@ public class Bomb : MonoBehaviour {
         // wait until the object has landed then start the coundown
 		if (GetComponent<HazardProperties>().FallenObjectLanded)
         {
-            Invoke("Countdown", CountDownTime);
+            Invoke("CountDown", CountDownTime);
             GetComponent<HazardProperties>().FallenObjectLanded = false;            // bad practice
         }
 	}
@@ -34,6 +34,11 @@ public class Bomb : MonoBehaviour {
     // this will cause the bomb to  explode
     void CountDown()
     {
-
+        // create a explosion!!!
+        GameObject type = Resources.Load("Prefabs/ExplosionObject") as GameObject;
+        type = Instantiate(type, this.transform.position, Quaternion.identity);
+        type.GetComponent<Explosion>().ExplosionPower = ExplosionPower;
+        Destroy(this.gameObject);
+;        
     }
 }

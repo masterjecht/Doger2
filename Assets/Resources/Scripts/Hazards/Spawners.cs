@@ -79,13 +79,13 @@ public class Spawners : MonoBehaviour {
         //-----------right ------------------
         if (Side == "Right")
         {
-            this.transform.position = new Vector3(-5, 0, 0);
+            this.transform.position = new Vector3(-3, 0, 0);
         }
 
         //-----------Left ------------------
         if (Side == "Left")
         {
-            this.transform.position = new Vector3(5, 0, 0);
+            this.transform.position = new Vector3(3, 0, 0);
         }
     }
 
