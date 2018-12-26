@@ -14,14 +14,19 @@ public class PlatformProperties : MonoBehaviour {
     public Vector2 BottomLeft;
     public Vector2 BottomRight;
 
+    public GameObject PlayerSpawn;
+
 	void Start () {
         // finding the deminsions
         TopLeft = transform.Find("TopLeft").position;
         TopRight = transform.Find("TopRight").position;
         BottomLeft = transform.Find("BottomLeft").position;
         BottomRight = transform.Find("BottomRight").position;
-        	
-	}
+
+        // finding the spawn location
+        PlayerSpawn = transform.Find("PlayerSpawn").gameObject;
+
+    }
 
     public Vector2 FindRandomLocation()
     {

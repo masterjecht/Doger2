@@ -17,6 +17,8 @@ public class PlayerMasterScript : MonoBehaviour {
 
     public bool Paused;
 
+    public string CurrentWold;
+
 
 	void Start () {
         // start the level NOTE remove this when demo over
@@ -57,7 +59,7 @@ public class PlayerMasterScript : MonoBehaviour {
 
         }
 
-        GetComponent<TimeLine>().StopTimer();
+       // GetComponent<TimeLine>().StopTimer();
         GetComponent<InGameText>().GameOver();
 
 

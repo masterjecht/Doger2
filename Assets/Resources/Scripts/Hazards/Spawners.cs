@@ -23,6 +23,9 @@ public class Spawners : MonoBehaviour {
     private GameObject Scripts;
     private GameObject Platform;
 
+    public float TimeUntilActive;               // this script will be passes onto the timeline when this script is found
+
+
 	void Start () {
         Player = GameObject.Find("Player");
         Scripts = GameObject.Find("Scripts");

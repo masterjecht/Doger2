@@ -6,17 +6,32 @@ public class TimeLine : MonoBehaviour {
 
     // Use this for initialization
     public float Time;
+    private bool IsSet;
 
     // 2 lists, 1 is the time the other is the spawner
-    public List<float> TimeSpawned;
+    public List<float> TimeSpawned;                     // NOTE this is set in the spawner script of each child
     public List<GameObject> Spawner;
 
     
 
 
 	void Start () {
-
+        // find all the spawners and find there time
+        foreach(Transform i in transform)
+        {
+            Spawner.Add(i.gameObject);
+            TimeSpawned.Add(i.gameObject.GetComponent<Spawners>().TimeUntilActive);
+            i.gameObject.SetActive(false);
+        }
+        IsSet = true;
+        // turn off this object and wait for active
+        this.gameObject.SetActive(false);
 	}
+
+    void OnEnable()
+    {
+        if (IsSet) StartTimer();
+    }
 
     public void StartTimer()
     {

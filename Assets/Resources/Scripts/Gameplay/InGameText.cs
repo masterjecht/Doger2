@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class InGameText : MonoBehaviour {
@@ -11,12 +12,15 @@ public class InGameText : MonoBehaviour {
 
     public GameObject GameOverMenu;
     public GameObject Scripts;
+    public bool LevelConfirmed;
+    public bool LevelCancelled;
 
 	void Start () {
         Scripts = GameObject.Find("Scripts");
         // finding GUI
         GameOverMenu = GameObject.Find("GameOverMenu");
         GameOverMenu.SetActive(false);
+
 
 
 	}
@@ -46,5 +50,18 @@ public class InGameText : MonoBehaviour {
     {
 
 
+    }
+
+    // this is the buttion on the level select to confirm to go the level
+    //NOTE these 2 booleans are use in the script "ChangeLevel"
+    public void AcceptLevelChange()
+    {
+        LevelConfirmed = true;
+    }
+
+    // this is when the button for cancel level is hit
+    public void CancelLevelChange()
+    {
+        LevelCancelled = true;
     }
 }
